@@ -1,21 +1,15 @@
-import React from 'react'
+import React from "react";
+import { noteItem } from "../interfaces";
 
-interface Props {
-  id: number,
-  title: string,
-  text: string,
-  date: string
-}
-
-function ListItem({id, title, text, date}: Props): JSX.Element {
+function ListItem({ id, title, text, date }: noteItem): JSX.Element {
   return (
-    <div className='p-4 border-b border-black cursor-pointer hover:scale-105 transition duration-150'>
-      <h1 className='font-bold mb-2'>{title}</h1>
-      <p className='text-xs tracking-wider'>
+    <div className="p-4 border-b border-black cursor-pointer hover:scale-105 transition duration-150">
+      <h1 className="font-bold mb-2">{title}</h1>
+      <p className="text-xs tracking-wider">
         {date} - {text}
       </p>
     </div>
-  )
+  );
 }
 
-export default ListItem
+export default ListItem;

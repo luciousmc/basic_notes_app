@@ -1,19 +1,28 @@
-import React from 'react'
-import ListItem from './ListItem'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { noteItem } from "../interfaces";
+import ListItem from "./ListItem";
 
 interface Props {
-  data: Array<{id: number, title: string, text: string, date: string}>
+  data: noteItem[];
 }
-
 
 function NotesList({ data }: Props): JSX.Element {
+  const history = useHistory();
+
+  const handleNoteClick = (id: number): void => {
+    history.push(`/note/${id}`);
+  };
+
   return (
-    <div className='bg-gray-700'>
+    <>
       {data.map(({ id, title, text, date }) => (
-        <ListItem key={id} id={id} title={title} text={text} date={date} />
+        <div className="bg-gray-700" onClick={() => handleNoteClick(id)}>
+          <ListItem key={id} id={id} title={title} text={text} date={date} />
+        </div>
       ))}
-    </div>
-  )
+    </>
+  );
 }
 
-export default NotesList
+export default NotesList;
