@@ -1,45 +1,28 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import NotesList from "./components/NotesList";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [listItems, setListItems] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3004/notes')
+      .then(res => res.json())
+      .then(data => {
+        setListItems(data);
+      })
+  }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className='flex justify-center items-center h-screen'>
+      <div className="w-3/4 max-w-[600px] text-white">
+        <div className="bg-gray-800 py-8 pl-5">
+          <h1 className='text-3xl'>Notes List</h1>
+        </div>
+
+        <NotesList data={listItems} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

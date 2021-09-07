@@ -1,0 +1,22 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Random text",
+      "text": "blah blah blah yackity shmackity",
+      "date": "9/7/2021"
+    },
+    {
+      "id": 2,
+      "title": "Random text too",
+      "text": "blah blah blah yackity shmackity too",
+      "date": "9/8/2021"
+    },
+    {
+      "id": 3,
+      "title": "Random text tree",
+      "text": "blah blah blah yackity shmackity tree",
+      "date": "9/9/2021"
+    } 
+  ]
+}
